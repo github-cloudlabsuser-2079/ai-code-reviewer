@@ -23,7 +23,7 @@ jobs:
           OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
           OPENAI_API_MODEL: "gpt-3.5"
           exclude: "**/*.json, **/*.md"
-          # You can add more configuration or use a custom AI review action here
+          # You can add more configuration or use a custom AI review action here 
 
       # Example: Using a hypothetical AI review action
       # - name: AI Code Review
