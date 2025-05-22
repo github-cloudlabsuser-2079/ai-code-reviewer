@@ -1,0 +1,33 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - main
+      - master
+permissions: write-all
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Run AI Code Review
+        uses: ai-code-reviewer@main
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          OPENAI_API_KEY: ${{secrets.OPENAI_API_KEY}}
+          OPENAI_API_MODEL: "gpt-3.5"
+          exclude: "**/*.json, **/*.md"
+          # You can add more configuration or use a custom AI review action here
+
+      # Example: Using a hypothetical AI review action
+      # - name: AI Code Review
+      #   uses: your-org/ai-code-review-action@v1
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     review_level: 'standard'
